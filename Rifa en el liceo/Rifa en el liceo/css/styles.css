@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial, sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+header {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    background-color: #0F172A;
+}
+footer {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0F172A;
+}
+.parrafo {
+    color: #E2E8F0;
+}
+@media (max-width: 768px) {
+
+}
