@@ -102,12 +102,7 @@ footer {
         display: block;
         order: 3;                 
     }
-    nav {
-        display: none;          
-        width: 100%;
-        order: 4;                
-    }
-    nav.nav-activo {
+    .nav-links.nav-activo {
         display: flex;
     }
     .nav-links {
@@ -115,6 +110,9 @@ footer {
         width: 100%;
         gap: 0;
         padding: 0.5em 0;
+        display: none;          
+        width: 100%;
+        order: 4;    
     }
     .nav-links a {
         width: 100%;
