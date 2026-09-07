@@ -6,9 +6,9 @@ botonMenu.addEventListener('click', () => {
     nav.classList.toggle('nav-activo');
 });
 
-// Manejo del catálogo de servicios
+// Equipo organizador de la rifa
 const equipo = [
-    { nombre: "Kevin Trujillo", curso: "4°D", frase: "Nos haremos ricos con esta ****", foto: "img/ProgramadorPromedio.avif" }
+    { nombre: "Kevin Trujillo", rol: "Desarrollador — 4°D", foto: "img/ProgramadorPromedio.avif", descripcion: "Encargado del desarrollo web y la lógica de la plataforma de rifa." }
 ];
 
 const divEquipo = document.getElementById('equipo');
@@ -18,9 +18,10 @@ if (divEquipo) {
             <div class="tarjeta">
                 <img src="${persona.foto}" alt="${persona.nombre}">
                 <h3>${persona.nombre}</h3>
-                <p>${persona.curso} - "${persona.frase}"</p>
+                <p class="rol">${persona.rol}</p>
+                <p class="descripcion">${persona.descripcion}</p>
             </div>`;
     });
 }
 
-
+// Sistema de rifa

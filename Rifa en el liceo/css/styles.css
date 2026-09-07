@@ -73,7 +73,6 @@ main {
     flex-grow: 1;
     padding: 20px;
     margin: 10px;
-    border: 2px solid #0F172A;
 }
 
 footer {
@@ -86,6 +85,42 @@ footer {
 
 .parrafo {
     color: #E2E8F0;
+}
+
+#equipo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tarjeta {
+    background-color: #E2E8F0;
+    color: #1e40af;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-width: 300px;
+    border: #1e40af 1px solid;
+}
+.tarjeta img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+}
+.rol {
+    background-color: #1e40af;
+    color: #E2E8F0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    background-color: #E2E8F0;
+    color: #1e40af;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 1024px) {
