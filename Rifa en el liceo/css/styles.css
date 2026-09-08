@@ -123,6 +123,34 @@ footer {
     margin-bottom: 10px;
 }
 
+.grilla-numeros{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.grilla-numeros span{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.grilla-numeros span.disponible{
+    background-color: #E2E8F0;
+    color: #1e40af;
+}
+
+.grilla-numeros span.ocupado{
+    background-color: #94a3b8;
+    color: #FFFFFF;
+    text-decoration: line-through;
+}
+
 @media (max-width: 1024px) {
     header {
         padding: 0.5em 1em;

@@ -25,3 +25,34 @@ if (divEquipo) {
 }
 
 // Sistema de rifa
+const rifas = [
+    {id: 1, 
+    nombre: "Rifa de bicicleta", 
+    imagen: "img/Premio-Bicicleta.jpg", 
+    precio: 1000, 
+    stockTotal: 30, 
+    numerosOcupados: [],
+    fechaSorteo: null, 
+    ganador: null, 
+    }
+];
+
+const divcatalogo = document.getElementById('catalogo');
+if (divcatalogo) {
+    rifas.forEach(rifa => {
+        const disponibles = rifa.stockTotal - rifa.numerosOcupados.length;
+        let htmlNumeros = '';
+        for (let i =1; i <= rifa.stockTotal; i++) {
+            const ocupado = rifa.numerosOcupados.includes(i);
+            htmlNumeros += `<span class="${ocupado ? 'ocupado' : 'disponible'}">${i}</span>`;
+        }        
+        divcatalogo.innerHTML += `
+            <div class="tarjeta">
+                <img src="${rifa.imagen}" alt="${rifa.nombre}">
+                <h3>${rifa.nombre}</h3>
+                <p class="precio">Valor de boleto: $${rifa.precio.toLocaleString()}</p>
+                <p class="stock">Numeros disponibles: ${disponibles}/${rifa.stockTotal}</p>
+                <div class="grilla-numeros">${htmlNumeros}</div>
+            </div>`;
+    });
+}
