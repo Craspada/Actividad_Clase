@@ -83,6 +83,14 @@ footer {
     background-color: #0F172A;
 }
 
+.error {
+    color: #da4f4f;
+}
+
+.exito {
+    color: #44d378;
+}
+
 .parrafo {
     color: #E2E8F0;
 }
@@ -123,6 +131,16 @@ footer {
     margin-bottom: 10px;
 }
 
+.alerta-compra {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin: 10px;
+    border: 1px solid #f59e0b;
+    text-align: center;
+}
+
 .grilla-numeros{
     display: flex;
     flex-wrap: wrap;
@@ -149,6 +167,39 @@ footer {
     background-color: #94a3b8;
     color: #FFFFFF;
     text-decoration: line-through;
+}
+
+.tabla-cotizacion {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.tabla-cotizacion th, .tabla-cotizacion td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: left;
+}
+.tabla-cotizacion th {
+    background-color: #1e40af;
+    color: white;
+}
+.advertencia-ads {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #f59e0b;
+    margin-top: 10px;
+}
+.cta-ads {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 @media (max-width: 1024px) {

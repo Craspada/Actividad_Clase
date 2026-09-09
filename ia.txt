@@ -1,0 +1,34 @@
+DECLARACIÓN DE USO DE INTELIGENCIA ARTIFICIAL
+
+Herramienta utilizada: Claude (Anthropic)
+Porcentaje estimado de asistencia de IA: 45%
+
+Detalle de bloques asistidos:
+
+1. Menú hamburguesa responsivo (CSS + JS): guía conceptual sobre flexbox, 
+   especificidad CSS y addEventListener. Código escrito por mí, con 
+   corrección de bugs propios (ej. selector de clase vs id) guiada por 
+   la IA mediante preguntas, no código entregado directamente.
+
+2. Sistema de rifas con array de objetos y grilla de números: la IA 
+   explicó el concepto de bucle anidado y variable acumuladora con un 
+   ejemplo aislado; yo adapté esa lógica a mi caso real. El bloque de 
+   compra aleatoria (comprarBoleto) y la integración con localStorage 
+   fueron escritos directamente por la IA por restricción de tiempo, 
+   y luego explicados en detalle.
+
+3. Validación de formulario de contacto y login administrativo: código 
+   entregado directamente por la IA por restricción de tiempo (entrega 
+   la misma noche), con explicación posterior de cada función 
+   (preventDefault, trim, classList, querySelectorAll).
+
+4. Calculadora de finanzas y Google Ads: valores de dominio y hosting 
+   investigados por la IA (fuentes: NIC Chile, comparativas de hosting 
+   2026). Lógica de cálculo y validación entregada directamente por la 
+   IA por restricción de tiempo.
+
+5. Box Model, flexbox del header/footer, y estructura HTML semántica: 
+   trabajados con guía conceptual y preguntas, escritos por mí.
+
+Puedo explicar y defender en vivo la lógica de cada bloque de código, 
+incluyendo el propósito de cada función y por qué se estructuró así.
