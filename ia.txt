@@ -1,5 +1,7 @@
 DECLARACIÓN DE USO DE INTELIGENCIA ARTIFICIAL
 
+Uso aproximado de IA: 40% - 50%
+
 IA usada: Claude 
 Se uso IA para lo siguiente:
 Guia y orintador para las preguntas, dudas y posibles soluciones para los distintos problemas en el codigo,
