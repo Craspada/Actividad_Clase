@@ -1,12 +1,11 @@
-// Manejo del menú responsivo
+// Menú responsivo
 const botonMenu = document.getElementById('boton_menu');
 const nav = document.querySelector('nav');
-
 botonMenu.addEventListener('click', () => {
     nav.classList.toggle('nav-activo');
 });
 
-// Equipo organizador de la rifa
+// Equipo organizador
 const equipo = [
     { nombre: "Kevin Trujillo", rol: "Desarrollador — 4°D", foto: "img/kevin.jpg", descripcion: "Encargado del desarrollo web y la lógica de la plataforma de rifa." },
     { nombre: "Camila Torres", rol: "Tesorera — 4°D", foto: "img/camila.jpg", descripcion: "Encargada de la gestión de fondos recaudados y control financiero de la rifa." },
@@ -18,7 +17,7 @@ const equipo = [
     { nombre: "Isidora Fuentes", rol: "Secretaria — 4°D", foto: "img/isidora.jpg", descripcion: "Encargada de llevar el registro de participantes y comunicaciones internas." },
     { nombre: "Tomás Vergara", rol: "Encargado de Logística — 4°D", foto: "img/tomas.jpg", descripcion: "Responsable de la organización del evento del sorteo y entrega de premios." },
     { nombre: "Antonia Reyes", rol: "Community Manager — 4°D", foto: "img/antonia.jpg", descripcion: "Encargada de mantener actualizadas las redes sociales del proyecto." },
-    { nombre: "Joaquín Herrera", rol: "Encargado de Contacto con Sponsors — 4°D", foto: "img/joaquin.jpg", descripcion: "Responsable de buscar y coordinar auspiciadores para los premios de la rifa." },
+    { nombre: "Joaquín Herrera", rol: "Contacto con Sponsors — 4°D", foto: "img/joaquin.jpg", descripcion: "Responsable de buscar y coordinar auspiciadores para los premios de la rifa." },
     { nombre: "Martina López", rol: "Supervisora de Calidad — 4°D", foto: "img/martina.jpg", descripcion: "Encargada de revisar que todo el proceso de la rifa se realice de forma transparente." }
 ];
 
@@ -37,40 +36,74 @@ if (divEquipo) {
 
 // Sistema de rifa
 const rifas = [
-    {id: 1, 
-    nombre: "Rifa de bicicleta", 
-    imagen: "img/Premio-Bicicleta.jpg", 
-    precio: 1000, 
-    stockTotal: 30, 
-    numerosOcupados: JSON.parse(localStorage.getItem('rifa_1_numeros')) || [],
-    fechaSorteo: null, 
-    ganador: null, 
+    {
+        id: 1,
+        nombre: "Rifa de bicicleta",
+        imagen: "img/Premio-Bicicleta.jpg",
+        precio: 1000,
+        stockTotal: 10,
+        numerosOcupados: JSON.parse(localStorage.getItem('rifa_1_numeros')) || [],
+    },
+    {
+        id: 2,
+        nombre: "Rifa de televisión",
+        imagen: "img/Premio-Televisor.jpg",
+        precio: 2000,
+        stockTotal: 20,
+        numerosOcupados: JSON.parse(localStorage.getItem('rifa_2_numeros')) || [],
+    },
+    {
+        id: 3,
+        nombre: "Rifa de PlayStation 5",
+        imagen: "img/Premio-PlayStation5.webp",
+        precio: 5000,
+        stockTotal: 50,
+        numerosOcupados: JSON.parse(localStorage.getItem('rifa_3_numeros')) || [],
+    },
+    {
+        id: 4,
+        nombre: "Rifa de Iphone 17 Pro Max",
+        imagen: "img/Premio-Iphone17ProMax.jpg",
+        precio: 3000,
+        stockTotal: 30,
+        numerosOcupados: JSON.parse(localStorage.getItem('rifa_4_numeros')) || [],
     }
 ];
 
 function renderizarCatalogo() {
-    const divcatalogo = document.getElementById('catalogo');
-    if (!divcatalogo) return;
+    const divCatalogo = document.getElementById('catalogo');
+    if (!divCatalogo) return;
 
-    divcatalogo.innerHTML = '';
+    divCatalogo.innerHTML = '';
 
     rifas.forEach(rifa => {
         const disponibles = rifa.stockTotal - rifa.numerosOcupados.length;
+
         let htmlNumeros = '';
         for (let i = 1; i <= rifa.stockTotal; i++) {
             const ocupado = rifa.numerosOcupados.includes(i);
             htmlNumeros += `<span class="${ocupado ? 'ocupado' : 'disponible'}">${i}</span>`;
         }
-        divcatalogo.innerHTML += `
+
+        divCatalogo.innerHTML += `
             <div class="tarjeta">
-                <img src="${rifa.imagen}" alt="${rifa.nombre}">
-                <h3>${rifa.nombre}</h3>
-                <p class="precio">Valor de boleto: $${rifa.precio.toLocaleString()}</p>
-                <p class="stock">Numeros disponibles: ${disponibles}/${rifa.stockTotal}</p>
-                <div class="grilla-numeros">${htmlNumeros}</div>
-                <button class="boton-comprar" data-id="${rifa.id}" ${disponibles === 0 ? 'disabled' : ''}>
-                    ${disponibles === 0 ? 'Agotado' : 'Comprar'}
-                </button>
+                <div class="rifa-info">
+                    <img src="${rifa.imagen}" alt="${rifa.nombre}">
+                    <h3>${rifa.nombre}</h3>
+                    <p class="precio">Valor de boleto: $${rifa.precio.toLocaleString()}</p>
+                    <p class="stock">Numeros disponibles: ${disponibles}/${rifa.stockTotal}</p>
+                </div>
+                <div class="rifa-numeros">
+                    <div class="grilla-numeros">${htmlNumeros}</div>
+                    <button class="boton-comprar" data-id="${rifa.id}" ${disponibles === 0 ? 'disabled' : ''}>
+                        ${disponibles === 0 ? 'Agotado' : 'Comprar al azar'}
+                    </button>
+                    <div class="compra-manual">
+                        <input type="number" class="input-numero" data-id="${rifa.id}" placeholder="N° (1-${rifa.stockTotal})" min="1" max="${rifa.stockTotal}">
+                        <button class="boton-elegir" data-id="${rifa.id}">Elegir este número</button>
+                    </div>
+                    <div class="error-numero" data-id="${rifa.id}"></div>
+                </div>
             </div>`;
     });
 
@@ -78,21 +111,39 @@ function renderizarCatalogo() {
         boton.addEventListener('click', () => {
             const id = parseInt(boton.getAttribute('data-id'));
             const rifa = rifas.find(r => r.id === id);
-            if (rifa) {
-                comprarBoleto(rifa);
-            }
+            if (rifa) comprarBoleto(rifa);
         });
     });
-}
 
+    document.querySelectorAll('.boton-elegir').forEach(boton => {
+    boton.addEventListener('click', () => {
+        const id = parseInt(boton.getAttribute('data-id'));
+        const rifa = rifas.find(r => r.id === id);
+        const input = document.querySelector(`.input-numero[data-id="${id}"]`);
+        const divError = document.querySelector(`.error-numero[data-id="${id}"]`);
+        const numero = parseInt(input.value);
+
+        if (isNaN(numero) || numero < 1 || numero > rifa.stockTotal) {
+            divError.innerHTML = `<p class="error">Ingresa un número válido entre 1 y ${rifa.stockTotal}.</p>`;
+            return;
+        }
+        if (rifa.numerosOcupados.includes(numero)) {
+            divError.innerHTML = `<p class="error">Ese número ya está ocupado, elige otro.</p>`;
+            return;
+        }
+
+        rifa.numerosOcupados.push(numero);
+        localStorage.setItem(`rifa_${rifa.id}_numeros`, JSON.stringify(rifa.numerosOcupados));
+        localStorage.setItem('compraActiva', JSON.stringify({ rifa: rifa.nombre, numero: numero }));
+        renderizarCatalogo();
+    });
+});
+}
 function comprarBoleto(rifa) {
     const numerosLibres = [];
     for (let i = 1; i <= rifa.stockTotal; i++) {
-        if (!rifa.numerosOcupados.includes(i)) {
-            numerosLibres.push(i);
-        }
+        if (!rifa.numerosOcupados.includes(i)) numerosLibres.push(i);
     }
-
     if (numerosLibres.length === 0) return;
 
     const indiceAleatorio = Math.floor(Math.random() * numerosLibres.length);
@@ -108,7 +159,7 @@ function comprarBoleto(rifa) {
 
 renderizarCatalogo();
 
-// Barra de estado (solo se activa si existe el contenedor, o sea, solo en index.html)
+// Barra de estado (solo existe el contenedor en index.html)
 const divEstado = document.getElementById('barra-estado');
 if (divEstado) {
     const compra = JSON.parse(localStorage.getItem('compraActiva'));
@@ -132,19 +183,10 @@ if (formContacto) {
         const divErrores = document.getElementById('errores-contacto');
 
         let errores = [];
-
-        if (nombre.length === 0) {
-            errores.push('El nombre no puede estar vacío.');
-        }
-        if (email.length === 0) {
-            errores.push('El email no puede estar vacío.');
-        }
-        if (mensaje.length === 0) {
-            errores.push('El mensaje no puede estar vacío.');
-        }
-        if (mensaje.length > 0 && mensaje.length < 10) {
-            errores.push('El mensaje debe tener al menos 10 caracteres.');
-        }
+        if (nombre.length === 0) errores.push('El nombre no puede estar vacío.');
+        if (email.length === 0) errores.push('El email no puede estar vacío.');
+        if (mensaje.length === 0) errores.push('El mensaje no puede estar vacío.');
+        if (mensaje.length > 0 && mensaje.length < 10) errores.push('El mensaje debe tener al menos 10 caracteres.');
 
         if (errores.length > 0) {
             divErrores.innerHTML = errores.map(err => `<p class="error">${err}</p>`).join('');
@@ -189,10 +231,8 @@ function mostrarPanelAdmin() {
     panel.innerHTML = `
         <h3>Panel de Administración</h3>
         <p class="exito">Bienvenido, Administrador</p>
-        <table border="1">
-            <thead>
-                <tr><th>Número comprado</th><th>Rifa</th></tr>
-            </thead>
+        <table>
+            <thead><tr><th>Número comprado</th><th>Rifa</th></tr></thead>
             <tbody>
                 ${filas.length > 0 ? filas : '<tr><td colspan="2">Sin compras registradas todavía.</td></tr>'}
             </tbody>
@@ -235,6 +275,7 @@ if (formAds) {
         }
 
         errorAds.innerHTML = '';
+        resultadoAds.innerHTML = '';
 
         const costoAds = cpc * clics;
         resultadoAds.innerHTML = `<p>Costo mensual de la campaña: <strong>$${costoAds.toLocaleString()} CLP</strong></p>`;
@@ -243,11 +284,8 @@ if (formAds) {
             resultadoAds.innerHTML += `
                 <p class="advertencia-ads">⚠️ Presupuesto de marketing alto para fase de lanzamiento</p>
                 <button class="cta-ads">¡Adquiere esta campaña ahora!</button>`;
-        }
-        // Dentro del listener del formulario de Ads, justo donde generas el botón,
-        // después de la línea que arma el innerHTML con el botón .cta-ads, agrega:
-        const botonCta = document.querySelector('.cta-ads');
-        if (botonCta) {
+
+            const botonCta = document.querySelector('.cta-ads');
             botonCta.addEventListener('click', () => {
                 resultadoAds.innerHTML += `<p class="exito">¡Gracias! Te contactaremos para coordinar tu campaña de Google Ads.</p>`;
             });
@@ -258,4 +296,3 @@ if (formAds) {
         costoTotalDiv.innerHTML = `<h3>Costo Total del Proyecto: $${costoTotal.toLocaleString()} CLP</h3>`;
     });
 }
-

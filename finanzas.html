@@ -1,74 +1,79 @@
 <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rifa en el liceo - Finanzas</title>
-        <meta name="author" content="Kevin Trujillo">
-        <meta name="keywords" content="rifa, liceo, premios, participación, contacto, online, escolar, boletos, participar, venta, compra, tombola, sorteo, evento, comunidad, estudiantes, profesores, padres, familia, diversión, entretenimiento, premios, regalos, oportunidades, ganar, suerte, participación, inscripción, registro, numeros, rifa escolar, sorteo escolar">
-        <meta name="description" content="Cotización real de costos y calculadora de Google Ads para la rifa del liceo.">
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
-    <body>
-        <header>
-            <h1>Rifa en el liceo - Finanzas</h1>
-            <button id="boton_menu">Menu</button>
-            <nav class="nav-links">
-                <a href="index.html">Inicio</a>
-                <a href="nosotros.html">Nosotros</a>
-                <a href="servicios.html">Servicios</a>
-                <a href="contacto.html">Contacto</a>
-                <a href="finanzas.html">Finanzas</a>
-            </nav>            
-        </header>
-        <main>
-            <section id="finanzas">
-                <h2>Cotización del Proyecto</h2>
-                <table class="tabla-cotizacion">
-                    <thead>
-                        <tr><th>Ítem</th><th>Detalle</th><th>Costo</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Dominio (.cl)</td>
-                            <td>NIC Chile, registro anual ($9.940 + IVA)</td>
-                            <td>$11.828</td>
-                        </tr>
-                        <tr>
-                            <td>Hosting</td>
-                            <td>Plan básico anual ($21.900 + IVA)</td>
-                            <td>$26.061</td>
-                        </tr>
-                        <tr>
-                            <td>Capital Humano</td>
-                            <td>$3.000/hora × 20 horas</td>
-                            <td>$60.000</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p id="subtotal-fijo"></p>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa en el liceo - Finanzas</title>
+    <meta name="author" content="Kevin Trujillo">
+    <meta name="keywords" content="rifa, finanzas, presupuesto, google ads">
+    <meta name="description" content="Cotización real de costos y calculadora de Google Ads para la rifa del liceo.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Rifa en el liceo</a></h1>
+        <button id="boton_menu">Menu</button>
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="finanzas.html">Finanzas</a>
+        </nav>
+    </header>
+    <main>
+        <section id="finanzas">
+            <div class="bloque-finanzas">
+            <h2>Cotización del Proyecto</h2>
+            <table class="tabla-cotizacion">
+                <thead>
+                    <tr><th>Ítem</th><th>Detalle</th><th>Costo</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dominio (.cl)</td>
+                        <td>NIC Chile, registro anual ($9.940 + IVA)</td>
+                        <td>$11.828</td>
+                    </tr>
+                    <tr>
+                        <td>Hosting</td>
+                        <td>Plan básico anual ($21.900 + IVA)</td>
+                        <td>$26.061</td>
+                    </tr>
+                    <tr>
+                        <td>Capital Humano</td>
+                        <td>$3.000/hora × 20 horas</td>
+                        <td>$60.000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="subtotal-fijo"></p>                
+            </div>
 
-                <h2>Calculadora de Campaña Google Ads</h2>
-                <form id="calculadora-ads">
-                    <div>
-                        <label for="cpc">Costo por Clic (CPC) en CLP:</label>
-                        <input type="number" id="cpc" placeholder="Ej: 150">
-                    </div>
-                    <div>
-                        <label for="clics">Cantidad de clics mensuales:</label>
-                        <input type="number" id="clics" placeholder="Ej: 500">
-                    </div>
-                    <div id="error-ads"></div>
-                    <button type="submit">Calcular</button>
-                </form>
+            <div class="bloque-finanzas">
+            <h2>Calculadora de Campaña Google Ads</h2>
+            <form id="calculadora-ads">
+                <div>
+                    <label for="cpc">Costo por Clic (CPC) en CLP:</label>
+                    <input type="number" id="cpc" placeholder="Ej: 150">
+                </div>
+                <div>
+                    <label for="clics">Cantidad de clics mensuales:</label>
+                    <input type="number" id="clics" placeholder="Ej: 500">
+                </div>
+                <div id="error-ads"></div>
+                <button type="submit">Calcular</button>
+            </form>
 
-                <div id="resultado-ads"></div>
-                <div id="costo-total"></div>
-            </section>
-        </main>
-        <footer>
-            <p class="parrafo">&copy; 2026 Rifa en el liceo. Todos los derechos reservados.</p>
-        </footer>
-        <script src="js/app.js"></script>
-    </body>
+            <div id="resultado-ads"></div>
+            <div id="costo-total"></div>
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="parrafo">&copy; 2026 Rifa en el liceo.</p>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
 </html>
