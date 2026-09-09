@@ -1,34 +1,37 @@
 DECLARACIÓN DE USO DE INTELIGENCIA ARTIFICIAL
 
-Herramienta utilizada: Claude (Anthropic)
-Porcentaje estimado de asistencia de IA: 45%
+IA usada: Claude 
+Se uso IA para lo siguiente:
+Guia y orintador para las preguntas, dudas y posibles soluciones para los distintos problemas en el codigo,
+Se uso principalemente para el CSS y el JS en partes como: 
+function comprarBoleto(rifa) {
+    const numerosLibres = [];
+    for (let i = 1; i <= rifa.stockTotal; i++) {
+        if (!rifa.numerosOcupados.includes(i)) numerosLibres.push(i);
+    }
+    if (numerosLibres.length === 0) return;
 
-Detalle de bloques asistidos:
+    const indiceAleatorio = Math.floor(Math.random() * numerosLibres.length);
+    const numeroElegido = numerosLibres[indiceAleatorio];
 
-1. Menú hamburguesa responsivo (CSS + JS): guía conceptual sobre flexbox, 
-   especificidad CSS y addEventListener. Código escrito por mí, con 
-   corrección de bugs propios (ej. selector de clase vs id) guiada por 
-   la IA mediante preguntas, no código entregado directamente.
+    rifa.numerosOcupados.push(numeroElegido);
 
-2. Sistema de rifas con array de objetos y grilla de números: la IA 
-   explicó el concepto de bucle anidado y variable acumuladora con un 
-   ejemplo aislado; yo adapté esa lógica a mi caso real. El bloque de 
-   compra aleatoria (comprarBoleto) y la integración con localStorage 
-   fueron escritos directamente por la IA por restricción de tiempo, 
-   y luego explicados en detalle.
+    localStorage.setItem(`rifa_${rifa.id}_numeros`, JSON.stringify(rifa.numerosOcupados));
+    localStorage.setItem('compraActiva', JSON.stringify({ rifa: rifa.nombre, numero: numeroElegido }));
 
-3. Validación de formulario de contacto y login administrativo: código 
-   entregado directamente por la IA por restricción de tiempo (entrega 
-   la misma noche), con explicación posterior de cada función 
-   (preventDefault, trim, classList, querySelectorAll).
+    renderizarCatalogo();
+}
 
-4. Calculadora de finanzas y Google Ads: valores de dominio y hosting 
-   investigados por la IA (fuentes: NIC Chile, comparativas de hosting 
-   2026). Lógica de cálculo y validación entregada directamente por la 
-   IA por restricción de tiempo.
+renderizarCatalogo();
 
-5. Box Model, flexbox del header/footer, y estructura HTML semántica: 
-   trabajados con guía conceptual y preguntas, escritos por mí.
-
-Puedo explicar y defender en vivo la lógica de cada bloque de código, 
-incluyendo el propósito de cada función y por qué se estructuró así.
+// Barra de estado (solo existe el contenedor en index.html)
+const divEstado = document.getElementById('barra-estado');
+if (divEstado) {
+    const compra = JSON.parse(localStorage.getItem('compraActiva'));
+    if (compra) {
+        divEstado.innerHTML = `
+            <p class="alerta-compra">
+                🎟️ Ya hay boletos comprados: <strong>${compra.rifa}</strong> — Último número asignado: ${compra.numero}
+            </p>`;
+    }
+}
