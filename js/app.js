@@ -8,7 +8,6 @@ botonMenu.addEventListener('click', () => {
 // Equipo organizador
 const equipo = [
     { nombre: "Kevin Trujillo", rol: "Desarrollador — 4°D", foto: "img/kevin.jpg", descripcion: "Encargado del desarrollo web y la lógica de la plataforma de rifa." },
-    { nombre: "Camila Torres", rol: "Tesorera — 4°D", foto: "img/camila.jpg", descripcion: "Encargada de la gestión de fondos recaudados y control financiero de la rifa." },
     { nombre: "Fernanda Muñoz", rol: "Coordinadora General — 4°D", foto: "img/fernanda.jpg", descripcion: "Encargada de coordinar la logística general y el contacto con los premios de la rifa." },
     { nombre: "Diego Salazar", rol: "Encargado de Premios — 4°D", foto: "img/diego.jpg", descripcion: "Responsable de conseguir y gestionar los premios ofrecidos en la rifa." },
     { nombre: "Valentina Soto", rol: "Diseñadora Gráfica — 4°D", foto: "img/valentina.jpg", descripcion: "Encargada del diseño visual de afiches y material promocional de la rifa." },
